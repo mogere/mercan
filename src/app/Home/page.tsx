@@ -1,9 +1,29 @@
 "use client";
+import Header from "@/components/Header";
+import Slideshow from "@/components/slideshow";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
+const carSlides = [
+  {
+    image: "/car1.webp",
+    title: "Sleek Sedan",
+    desc: "Experience comfort and style with our latest sedan.",
+  },
+  {
+    image: "/car2.jpg",
+    title: "Sporty Coupe",
+    desc: "Feel the thrill with our high-performance coupe.",
+  },
+  {
+    image: "/car3.avif",
+    title: "Family SUV",
+    desc: "Space and safety for your whole family.",
+  },
+];
 const Home = () => {
   const [showHeader, setShowHeader] = useState(false);
+  const [current, setCurrent] = useState(0);
 
   const handleGoHome = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -11,47 +31,27 @@ const Home = () => {
     setTimeout(() => setShowHeader(true), 600); // Wait for scroll animation
   };
 
+  useEffect(() => {
+    if (!showHeader) return;
+    const timer = setTimeout(() => {
+      setCurrent((prev) => (prev + 1) % carSlides.length);
+    }, 4000);
+    return () => clearTimeout(timer);
+  }, [current, showHeader]);
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 relative">
       {/* Animated Header */}
-      <header
-        className={`fixed top-0 left-0 w-full z-20 bg-white shadow transition-all duration-700 ${
-          showHeader ? "h-20 opacity-100" : "h-0 opacity-0 pointer-events-none"
-        } flex items-center px-8`}
-      >
-        <div
-          className={`transition-all duration-700 ${
-            showHeader ? "translate-x-0" : "-translate-x-20 opacity-0"
-          }`}
-        >
-          <Image src="/logo.png" alt="Logo" width={60} height={60} />
-        </div>
-        <nav
-          className={`ml-10 flex gap-8 transition-opacity duration-700 ${
-            showHeader ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <a
-            href="#"
-            className="text-gray-700 font-semibold hover:text-orange-600"
-          >
-            Home
-          </a>
-          <a
-            href="#"
-            className="text-gray-700 font-semibold hover:text-orange-600"
-          >
-            Products
-          </a>
-          <a
-            href="#"
-            className="text-gray-700 font-semibold hover:text-orange-600"
-          >
-            Services
-          </a>
-        </nav>
-      </header>
+      <Header showHeader={showHeader} />
 
+      {/* Slideshow */}
+      {showHeader && (
+        <Slideshow
+          carSlides={carSlides}
+          current={current}
+          setCurrent={setCurrent}
+        />
+      )}
       {/* Main Content */}
       <div
         className={`flex flex-col items-center justify-center transition-all duration-700 ${
