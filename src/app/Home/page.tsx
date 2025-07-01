@@ -1,8 +1,10 @@
 "use client";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Slideshow from "@/components/slideshow";
-import Image from "next/image";
 import { useState, useEffect } from "react";
+import Image from "next/image";
+import FloatingCard from "@/components/FloatingCard";
 
 const carSlides = [
   {
@@ -75,6 +77,10 @@ const Home = () => {
           </a>
         </div>
       </div>
+
+      {/* Floating Car Brand Card */}
+      {showHeader && <FloatingCard />}
+      {showHeader && <Footer />}
     </div>
   );
 };
