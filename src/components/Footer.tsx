@@ -3,30 +3,54 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <div className="w-full m-2 rounded-sm bg-gray-100">
-      {/* Top Footer Band */}
-      {/* Footer Contact Band */}
-      <div className="w-full  bg-orange-600 text-white py-3 px-4 flex flex-col md:flex-row items-center justify-between text-center text-sm font-medium">
-        <span>📞 0741000000</span>
-        <span className="mx-2 hidden md:inline">|</span>
-        <span>✉️ info@mercan.com</span>
-      </div>
-
-      {/* Footer Main */}
-      <footer className="w-full bg-white border-t border-gray-200 py-10 px-4 flex flex-col md:flex-row justify-between items-start">
+    <>
+      <footer className="w-full bg-[#3A3A3C] h-[650px] border-t border-gray-200 py-10 px-4 flex flex-col md:flex-row justify-between items-start">
         {/* Left: Logo & Address */}
-        <div className="flex flex-col items-start w-full md:w-1/3 mb-8 md:mb-0">
+        <div className="flex m-[3rem] flex-col items-start w-full md:w-1/3 mb-8 md:mb-0">
           <Image
             src="/logo.png"
             alt="Mercan Logo"
             width={60}
             height={60}
-            className="mb-2"
+            className=""
           />
-          <div className="text-gray-700 text-sm mt-2">
-            Bungoma Road, off Bunyala Road
-            <br />
-            Nairobi, Kenya.
+          <div className="text-white w-[20rem] text-md mt-2">
+            <p>
+              Revitalize Your Ride with Mercan — Where expert repairs, genuine
+              spares, and trusted car sales come together to keep you moving
+              with confidence.
+            </p>
+          </div>
+          <div className="text-white w-[20rem] mt-7 text-md font-semibold ">
+            <ul>
+              <li className="flex gap-2 mb-1">
+                <Image
+                  src="/icons/location.svg"
+                  alt="Location Icon"
+                  width={16}
+                  height={16}
+                />
+                Nairobi, Kenya
+              </li>
+              <li className=" flex gap-2 mb-1">
+                <Image
+                  src="/icons/phone.svg"
+                  alt="Phone Icon"
+                  width={16}
+                  height={16}
+                />
+                Phone: +123 456 7890
+              </li>
+              <li className="flex gap-2 mb-1">
+                <Image
+                  src="/icons/mail.svg"
+                  alt="Email Icon"
+                  width={16}
+                  height={16}
+                />
+                Email: info@mercan.com
+              </li>
+            </ul>
           </div>
         </div>
         {/* Right: Car Brands */}
@@ -55,8 +79,14 @@ const Footer = () => {
             </ul>
           </div>
         </div>
+        <hr className="border-orange-500"></hr>
+        <div className="text-white text-sm mt-8">
+          <p className="text-center">
+            © {new Date().getFullYear()} Mercan. All rights reserved.
+          </p>
+        </div>
       </footer>
-    </div>
+    </>
   );
 };
 

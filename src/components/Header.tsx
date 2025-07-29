@@ -6,7 +6,7 @@ const Header = ({ showHeader }: { showHeader: boolean }) => {
   return (
     <div>
       <header
-        className={`fixed top-0 left-0 w-full z-20 bg-white shadow transition-all duration-700 ${
+        className={` flex justify-between fixed top-0 left-0 w-full z-20 bg-white shadow transition-all duration-700 ${
           showHeader ? "h-20 opacity-100" : "h-0 opacity-0 pointer-events-none"
         } flex items-center px-8`}
       >
@@ -32,15 +32,24 @@ const Header = ({ showHeader }: { showHeader: boolean }) => {
             href="#"
             className="text-gray-700 font-semibold hover:text-orange-600"
           >
-            Products
+            About
           </Link>
           <Link
             href="#"
             className="text-gray-700 font-semibold hover:text-orange-600"
           >
-            Services
+            Products & Services
+          </Link>
+          <Link
+            href="#"
+            className="text-gray-700 font-semibold hover:text-orange-600"
+          >
+            Contacts
           </Link>
         </nav>
+        <button className="bg-orange-600 text-white font-semibold py-2 px-4 rounded shadow hover:bg-orange-500 transition duration-300">
+          Get Started
+        </button>
       </header>
     </div>
   );
