@@ -15,13 +15,13 @@ const Faq = () => {
         height={19}
         className="items-center"
       />
-      <div className="flex justify-between gap-4 mt-8">
+      <div className="flex  gap-4 mt-8">
         <div className="questions">
           <div>
-            <h2 className="text-orange-500">
+            <h2 className="font-extrabold text-4xl text-orange-500">
               Do you offer a warranty on car repairs and spare parts?
             </h2>
-            <p className="text-gray-700">
+            <p className="text-wrap p-7  text-gray-700">
               Yes, we do. All our repairs and parts come with a warranty period
               to guarantee quality and peace of mind. The duration depends on
               the specific service or part, and we will always clarify this
