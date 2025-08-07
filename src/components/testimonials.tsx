@@ -17,6 +17,30 @@ const Testimonials = () => {
           className="items-center"
         />
       </div>
+      <div className="flex items-center mt-8">
+        <Image
+          src="/quotation.svg"
+          alt="Mercan quotation marks"
+          width={316}
+          height={19}
+          className="items-center"
+        />
+        <p className="text-gray-700 items-center w-2/3 text-4xl p-7">
+          I bought my car from Mercan Auto Spares and later came back for
+          servicing — both experiences were flawless. The team is honest, fast,
+          and genuinely cares about quality. I wouldn’t trust my car anywhere
+          else.
+        </p>
+      </div>
+      <div className="flex justify-center mt-8">
+        <Image
+          src="/stars.svg"
+          alt="5 star rating"
+          width={316}
+          height={19}
+          className="items-center"
+        />
+      </div>
     </div>
   );
 };

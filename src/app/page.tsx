@@ -1,7 +1,7 @@
 import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import Main from "@/components/main";
+import Hero from "@/components/hero";
 import NewsTips from "@/components/newstips";
 import Overview from "@/components/overview";
 import Services from "@/components/services";
@@ -14,7 +14,7 @@ export default function Home() {
       <Header showHeader={true} />
       {/* Add mt-20 (margin-top: 80px) to push content below the fixed header */}
       <main className="mt-20 font-montserrat bg-white min-h-screen">
-        <Main />
+        <Hero />
         <Services />
         <Testimonials />
         <Faq />

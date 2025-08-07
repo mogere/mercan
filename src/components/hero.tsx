@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-const Main = () => {
+const Hero = () => {
   return (
     <div className="w-full h-[600px]">
       <Image
@@ -14,4 +14,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Hero;
