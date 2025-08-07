@@ -1,10 +1,9 @@
-import React from "react";
 import Image from "next/image";
 
 const Footer = () => {
   return (
     <>
-      <footer className="w-full bg-[#3A3A3C] h-[650px] border-t border-gray-200 py-10 px-4 flex flex-col md:flex-row justify-between items-start">
+      <footer className="w-full bg-[#3A3A3C] h-[500px] border-t border-gray-200 py-10 px-4 flex flex-col md:flex-row justify-between items-start">
         <div className="flex m-[3rem] flex-col  h-full items-start w-full md:w-1/3 mb-8 md:mb-0">
           <Image
             src="/logo.png"
@@ -53,9 +52,9 @@ const Footer = () => {
           </div>
         </div>
         {/* Right: Car Brands */}
-        <div className="w-full mt-12 h-full text-2xl  md:w-2/3 flex justify-between">
+        <div className="w-full mt-20 h-full text-2xl  md:w-2/3 flex justify-between">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 w-full max-w-2xl">
-            <ul className="space-y-2 text-2xl text-white ">
+            <ul className="space-y-2 text-xl text-white ">
               <li>
                 <h1 className="text-orange-500 ">Services</h1>
               </li>
