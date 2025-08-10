@@ -2,6 +2,72 @@ import Image from "next/image";
 const Testimonials = () => {
   return (
     <div className="text-center p-8">
+      <div className="compatible text-start mb-8">
+        <div className="mb-8">
+          <h1 className="text-4xl font-extrabold text-gray-700">
+            <span className="text-orange-500">Compatible</span> With the
+            vehicles you know and trust
+          </h1>
+          <Image
+            src="/icons/underline.svg"
+            alt="Mercan underline"
+            width={316}
+            height={19}
+            className="items-center mt-4"
+          />
+        </div>
+        <div className="flex justify-center gap-20 items-center mt-8">
+          <Image
+            src="/icons/scroll-left.svg"
+            alt="Scroll left icon"
+            width={55}
+            height={55}
+            className="items-center"
+          />
+          <Image
+            src="/icons/mercedes.svg"
+            alt="Mercan compatible vehicles"
+            width={134}
+            height={134}
+            className="items-center"
+          />
+          <Image
+            src="/icons/honda.svg"
+            alt="Mercan compatible vehicles"
+            width={134}
+            height={134}
+            className="items-center"
+          />{" "}
+          <Image
+            src="/icons/toyota.svg"
+            alt="Mercan compatible vehicles"
+            width={134}
+            height={134}
+            className="items-center"
+          />
+          <Image
+            src="/icons/audi.svg"
+            alt="Mercan compatible vehicles"
+            width={134}
+            height={134}
+            className="items-center"
+          />
+          <Image
+            src="/icons/bmw.svg"
+            alt="Mercan compatible vehicles"
+            width={134}
+            height={134}
+            className="items-center"
+          />
+          <Image
+            src="/icons/scroll-right.svg"
+            alt="Scroll right icon"
+            width={55}
+            height={55}
+            className="items-center"
+          />
+        </div>
+      </div>
       <h2 className="text-orange-500 text-2xl">Testimonials</h2>
       <h1 className="font-extrabold text-4xl text-gray-700">
         <span className="text-gray-700">

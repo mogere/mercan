@@ -2,9 +2,9 @@ import Image from "next/image";
 import Card from "./Card";
 const Services = () => {
   return (
-    <div className="p-8">
-      <h2 className="text-gray-700 font-bold text-2xl">
-        <span className="text-orange-500">Our</span> Services
+    <div className="p-8 mt-[20rem]">
+      <h2 className="text-gray-700 font-bold text-4xl">
+        <span className="text-orange-500 ">Our</span> Services
       </h2>
       <Image
         src="/icons/underline.svg"
@@ -32,6 +32,40 @@ const Services = () => {
           title="Trusted Car Sales and Trade-Ins"
           description="Browse our handpicked selection of vehicles or trade in yours with confidence."
         />
+      </div>
+      <div className="about flex justify-between p-10 mt-20">
+        <div className="">
+          <Image
+            src="/welcometeam.png"
+            alt="About Us"
+            width={600}
+            height={600}
+            className="items-center"
+          />
+        </div>
+        <div className="text-gray-700 w-1/2">
+          <h1 className="text-4xl font-extrabold">
+            <span className="text-orange-500">About</span> Mercan Auto Spares
+          </h1>
+          <Image
+            src="/icons/underline.svg"
+            alt="About Us"
+            width={316}
+            height={19}
+            className="items-center"
+          />
+          <p className="mt-20 text-3xl">
+            At Mercan Auto Spares, we specialize in keeping your vehicle in peak
+            condition — inside and out. Whether you need expert mechanical
+            repairs, custom body kit upgrades, quality auto spares, or you are
+            looking to buy or trade in a car, we’ve got you covered. With a
+            strong focus on reliability, customer satisfaction, and automotive
+            excellence, we’re more than just a garage.
+          </p>
+          <p className="mt-20 text-3xl">
+            We are your trusted car care partner.
+          </p>
+        </div>
       </div>
     </div>
   );
