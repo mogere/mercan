@@ -13,7 +13,7 @@ const Services = () => {
         height={19}
         className="items-center"
       />
-      <div className="flex justify-between gap-10 my-8">
+      <div className="flex justify-between max-md:flex-row gap-10 my-8">
         <Card
           imageUrl="/filters.png"
           imageAlt="News Tips"

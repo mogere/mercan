@@ -1,7 +1,7 @@
 import Image from "next/image";
 const Testimonials = () => {
   return (
-    <div className="text-center p-8">
+    <div className="text-center why-mercan p-8">
       <div className="why">
         <Image
           src="/why-mercan.svg"
@@ -74,6 +74,46 @@ const Testimonials = () => {
             width={55}
             height={55}
             className="items-center"
+          />
+        </div>
+      </div>
+      <div className="confidence border my-[100px] flex justify-between">
+        <div className=" border confidence-text w-1/2 text-start p-10">
+          <h1 className="text-4xl font-extrabold text-gray-700">
+            <span className="text-orange-500">Mercan - </span> Drive with
+            confidence
+          </h1>
+          <Image
+            src="/icons/underline.svg"
+            alt="Mercan underline"
+            width={316}
+            height={19}
+            className="items-center mt-4"
+          />
+          <div className="confience-text w-[300px]">
+            <p className="mt-8 text-2xl text-gray-700">
+              Whether you’re hitting the road in a car you just bought or
+              bringing yours in for expert repairs, Mercan Auto Spares ensures
+              every ride is smooth, safe, and reliable. From trusted car sales
+              to top-tier mechanical services — we keep you confidently on the
+              move.
+            </p>
+          </div>
+        </div>
+        <div className="confidence-image w-1/2">
+          <Image
+            src="/prado.png"
+            alt="Prado car"
+            width={600}
+            height={600}
+            className="items-center absolute right-0 top-0"
+          />
+          <Image
+            src="/BMW.png"
+            alt="BMW car"
+            width={600}
+            height={600}
+            className="items-center relative right-0 top-50"
           />
         </div>
       </div>
