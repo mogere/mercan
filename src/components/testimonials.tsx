@@ -2,6 +2,15 @@ import Image from "next/image";
 const Testimonials = () => {
   return (
     <div className="text-center p-8">
+      <div className="why">
+        <Image
+          src="/why-mercan.svg"
+          alt="Why Mercan"
+          width={1635}
+          height={775}
+          className="items-center mb-8"
+        />
+      </div>
       <div className="compatible text-start mb-8">
         <div className="mb-8">
           <h1 className="text-4xl font-extrabold text-gray-700">
