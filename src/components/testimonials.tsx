@@ -90,7 +90,7 @@ const Testimonials = () => {
             height={19}
             className="items-center mt-4"
           />
-          <div className="confience-text w-[300px]">
+          <div className="confience-text w-[500px]">
             <p className="mt-8 text-2xl text-gray-700">
               Whether you’re hitting the road in a car you just bought or
               bringing yours in for expert repairs, Mercan Auto Spares ensures
@@ -106,14 +106,14 @@ const Testimonials = () => {
             alt="Prado car"
             width={600}
             height={600}
-            className="items-center absolute right-0 top-0"
+            className="items-center absolute right-40 "
           />
           <Image
             src="/BMW.png"
             alt="BMW car"
             width={600}
             height={600}
-            className="items-center relative right-0 top-50"
+            className="items-center relative right-40 top-50"
           />
         </div>
       </div>
