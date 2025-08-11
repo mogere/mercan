@@ -78,7 +78,7 @@ const Testimonials = () => {
         </div>
       </div>
       <div className="confidence border my-[100px] flex justify-between">
-        <div className=" border confidence-text w-1/2 text-start p-10">
+        <div className="  confidence-text w-1/2 text-start p-10">
           <h1 className="text-4xl font-extrabold text-gray-700">
             <span className="text-orange-500">Mercan - </span> Drive with
             confidence
@@ -90,7 +90,7 @@ const Testimonials = () => {
             height={19}
             className="items-center mt-4"
           />
-          <div className="confience-text w-[500px]">
+          <div className="confience-text w-[400px]">
             <p className="mt-8 text-2xl text-gray-700">
               Whether you’re hitting the road in a car you just bought or
               bringing yours in for expert repairs, Mercan Auto Spares ensures
