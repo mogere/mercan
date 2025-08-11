@@ -1,5 +1,24 @@
+import QuestionAnswer from "@/atoms/qa";
 import Image from "next/image";
 const Faq = () => {
+  const questions = [
+    {
+      question: "Do you offer a warranty on car repairs and spare parts?",
+      answer:
+        "Yes, we do. All our repairs and parts come with a warranty period to guarantee quality and peace of mind. The duration depends on the specific service or part, and we will always clarify this before any work begins.",
+    },
+    {
+      question: "What types of vehicles do you service?",
+      answer:
+        "We service a wide range of vehicles including sedans, SUVs, trucks, and hybrids. Our team is trained to handle various makes and models.",
+    },
+    {
+      question: "How can I book an appointment?",
+      answer:
+        "You can book an appointment through our website or by calling our customer service line. We recommend booking in advance to secure your preferred time slot.",
+    },
+  ];
+
   return (
     <div className="flex justify-between m-8 p-4">
       <div className="w-1/2">
@@ -16,71 +35,9 @@ const Faq = () => {
           height={19}
           className="items-center"
         />
-        <div className="flex  gap-4 mt-8">
-          <div className="questions">
-            <div>
-              <h2 className="font-extrabold text-2xl text-orange-500">
-                Do you offer a warranty on car repairs and spare parts?
-                <Image
-                  src="/icons/closeaccordion.svg"
-                  alt="close accordion icon"
-                  width={24}
-                  height={24}
-                  className="inline-block ml-10 cursor-pointer"
-                />
-              </h2>
-              <hr className="border-orange-300 my-4" />
-
-              <p className="text-wrap p-2 text-xl text-gray-700">
-                Yes, we do. All our repairs and parts come with a warranty
-                period to guarantee quality and peace of mind. The duration
-                depends on the specific service or part, and we will always
-                clarify this before any work begins.
-              </p>
-            </div>
-            <hr className="border-orange-300 my-4" />
-            <div>
-              <h2 className="font-extrabold text-2xl text-gray-700">
-                Do you offer a warranty on car repairs and spare parts?
-                <Image
-                  src="/icons/openaccordion.svg"
-                  alt="open accordion icon"
-                  width={24}
-                  height={24}
-                  className="inline-block ml-10 cursor-pointer"
-                />
-              </h2>
-            </div>
-            <hr className="border-orange-300 my-4" />
-
-            <div>
-              <h2 className="font-extrabold text-2xl text-gray-700">
-                Do you offer a warranty on car repairs and spare parts?
-                <Image
-                  src="/icons/openaccordion.svg"
-                  alt="open accordion icon"
-                  width={24}
-                  height={24}
-                  className="inline-block ml-10 cursor-pointer"
-                />
-              </h2>
-            </div>
-            <hr className="border-orange-300 my-4" />
-
-            <div>
-              <h2 className="font-extrabold text-2xl text-gray-700">
-                Do you offer a warranty on car repairs and spare parts?
-                <Image
-                  src="/icons/openaccordion.svg"
-                  alt="open accordion icon"
-                  width={24}
-                  height={24}
-                  className="inline-block ml-10 cursor-pointer"
-                />
-              </h2>
-            </div>
-          </div>
-        </div>
+        {questions.map((question, index) => (
+          <QuestionAnswer key={index} question={question} />
+        ))}
       </div>
       <div>
         <Image
