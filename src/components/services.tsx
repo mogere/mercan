@@ -2,7 +2,7 @@ import Image from "next/image";
 import Card from "./Card";
 const Services = () => {
   return (
-    <div className="p-8 mt-[20rem]">
+    <div className="p-8 sm:mt-[20rem]">
       <h2 className="text-gray-700 font-bold text-4xl">
         <span className="text-orange-500 ">Our</span> Services
       </h2>
@@ -13,7 +13,7 @@ const Services = () => {
         height={19}
         className="items-center"
       />
-      <div className="flex justify-between max-md:flex-row gap-10 my-8">
+      <div className="md:flex sm:px-2 flex-row justify-between gap-10 my-8">
         <Card
           imageUrl="/filters.png"
           imageAlt="News Tips"
@@ -33,8 +33,8 @@ const Services = () => {
           description="Browse our handpicked selection of vehicles or trade in yours with confidence."
         />
       </div>
-      <div className="about flex justify-between p-10 mt-20">
-        <div className="">
+      <div className="about mt-10 sm:flex justify-between sm:p-10 sm:mt-20">
+        <div className="hidden sm:block ">
           <Image
             src="/welcometeam.png"
             alt="About Us"
@@ -43,8 +43,8 @@ const Services = () => {
             className="items-center"
           />
         </div>
-        <div className="text-gray-700 w-1/2">
-          <h1 className="text-4xl font-extrabold">
+        <div className="text-gray-700 sm:w-1/2">
+          <h1 className="text-2xl sm:text-4xl font-extrabold">
             <span className="text-orange-500">About</span> Mercan Auto Spares
           </h1>
           <Image
@@ -54,7 +54,7 @@ const Services = () => {
             height={19}
             className="items-center"
           />
-          <p className="mt-20 text-3xl">
+          <p className="mt-10 text-xl sm:mt-20 sm:text-3xl">
             At Mercan Auto Spares, we specialize in keeping your vehicle in peak
             condition — inside and out. Whether you need expert mechanical
             repairs, custom body kit upgrades, quality auto spares, or you are

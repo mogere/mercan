@@ -12,7 +12,7 @@ const Testimonials = () => {
         />
       </div>
       <div className="compatible text-start mb-8">
-        <div className="mb-8">
+        <div className="overflow-scroll scrollbar-hide mb-8">
           <h1 className="text-4xl font-extrabold text-gray-700">
             <span className="text-orange-500">Compatible</span> With the
             vehicles you know and trust
