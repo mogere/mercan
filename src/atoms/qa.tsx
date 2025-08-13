@@ -11,7 +11,7 @@ const QuestionAnswer = ({
     <div className="questions mt-10">
       <div>
         <h2
-          className={`font-extrabold text-3xl flex flex-between gap-8 ${
+          className={`font-extrabold text-2xl md:text-3xl flex flex-between gap-8 ${
             showAnswer ? "text-orange-500" : "text-gray-700"
           }`}
         >

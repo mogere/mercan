@@ -21,9 +21,11 @@ const Faq = () => {
 
   return (
     <div className="flex justify-between m-8 p-4">
-      <div className="w-1/2">
-        <h1 className="text-orange-500 text-2xl">Frequently Asked Questions</h1>
-        <h1 className="text-gray-700 text-4xl mt-4 font-extrabold">
+      <div className="md:w-1/2">
+        <h1 className="text-orange-500 text-xl md:text-2xl">
+          Frequently Asked Questions
+        </h1>
+        <h1 className="text-gray-700 text-2xl md:text-3xl mt-4 font-extrabold">
           <span className="text-orange-500">Got Questions?</span> We have the
           answers
         </h1>
@@ -39,7 +41,7 @@ const Faq = () => {
           <QuestionAnswer key={index} question={question} />
         ))}
       </div>
-      <div>
+      <div className="hidden md:block w-1/2">
         <Image
           src="/questionman.svg"
           alt="question man"

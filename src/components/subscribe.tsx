@@ -8,9 +8,9 @@ const Subscribe = () => {
           alt="spares"
           width={417}
           height={362}
-          className=""
+          className="hidden md:block"
         />
-        <div className="text-white w-[600px] mr-10">
+        <div className="text-white hidden md:block w-[600px] mr-10">
           <h2 className="text-4xl font-bold mb-4">
             <span className="text-orange-500">Latest</span> News & Updates
           </h2>
