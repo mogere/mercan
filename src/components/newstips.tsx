@@ -5,20 +5,21 @@ import Card from "./Card";
 const NewsTips = () => {
   return (
     <div className="text-center p-8 ">
-      <h2 className="text-orange-500 text-2xl">News and Tips</h2>
-      <h1 className="font-extrabold text-4xl text-gray-700">
+      <h2 className="text-orange-500 text-xl md:text-2xl">News and Tips</h2>
+      <h1 className="font-extrabold text-2xl md:text-4xl text-gray-700">
         <span className="text-orange-500">Latest</span> News & Updates
       </h1>
-      <div className="flex justify-center items-center mt-4 mr-[120px]">
+      <div className="flex justify-center items-center mt-4 mr-[100px] md:mr-[120px]">
         <Image
           src="/icons/underline.svg"
           alt="News Tips"
           width={316}
           height={19}
-          className="items-center"
+          className="w-[200px] md:w-[316px] items-center"
         />
       </div>
-      <div className="flex justify-between gap-10 my-8">
+      {/* <div className="flex justify-between gap-10 my-8"> */}
+      <div className="md:flex sm:px-2 flex-row justify-between gap-10 my-8">
         <Card
           imageUrl="/filters.png"
           imageAlt="News Tips"

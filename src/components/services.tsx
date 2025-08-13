@@ -43,7 +43,7 @@ const Services = () => {
             className="items-center"
           />
         </div>
-        <div className="text-gray-700 sm:w-1/2">
+        <div className="text-gray-700 md:pl-5 sm:w-1/2">
           <h1 className="text-2xl sm:text-4xl font-extrabold">
             <span className="text-orange-500">About</span> Mercan Auto Spares
           </h1>
@@ -54,7 +54,7 @@ const Services = () => {
             height={19}
             className="items-center"
           />
-          <p className="mt-10 text-xl sm:mt-20 sm:text-3xl">
+          <p className="mt-10 md:pl-5 text-xl md:mt-20 md:text-3xl">
             At Mercan Auto Spares, we specialize in keeping your vehicle in peak
             condition — inside and out. Whether you need expert mechanical
             repairs, custom body kit upgrades, quality auto spares, or you are
@@ -62,7 +62,7 @@ const Services = () => {
             strong focus on reliability, customer satisfaction, and automotive
             excellence, we’re more than just a garage.
           </p>
-          <p className="mt-20 text-3xl">
+          <p className="mt-10 md:mt-20 md:pl-5 text-xl md:text-3xl">
             We are your trusted car care partner.
           </p>
         </div>
