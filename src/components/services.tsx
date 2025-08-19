@@ -1,18 +1,56 @@
 import Image from "next/image";
 import Card from "./Card";
+import Service from "./service";
 const Services = () => {
+  const imageUrls = [
+    "/garage.png",
+    "/autospares.png",
+    "/bodykit.png",
+    "/carsales.png",
+  ];
   return (
     <div className="p-8 sm:mt-[20rem]">
-      <h2 className="text-gray-700 font-bold text-4xl">
-        <span className="text-orange-500 ">Our</span> Services
-      </h2>
-      <Image
-        src="/icons/underline.svg"
-        alt="News Tips"
-        width={316}
-        height={19}
-        className="items-center"
-      />
+      <div className="md:flex sm:px-2 flex-row justify-between gap-10 my-8">
+        {imageUrls.map((imageUrl, index) => (
+          <Service key={index} imageUrl={imageUrl} />
+        ))}
+      </div>
+      <div className="text-center p-8">
+        <select className="text-gray-700 w-[25rem]  border-b-2 text-lg font-bold mb-4">
+          <option value="bodykits">Body kits</option>
+          <option value="autospares">Auto Spares</option>
+          <option value="garage">Garage</option>
+          <option value="carsales">Car Sales</option>
+        </select>
+      </div>
+      <div className=" md:flex sm:px-2 flex-row justify-center gap-30 my-8">
+        <select className="text-gray-700 border border-orange-500 px-5 p-2 text-lg font-bold mb-4">
+          <option value="">Make</option>
+          <option value="toyota">Toyota</option>
+          <option value="honda">Honda</option>
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option>
+          <option value="bmw">BMW</option>
+          <option value="suzuki">Suzuki</option>
+          <option value="porsche">Porsche</option>
+          <option value="subaru">Subaru</option>
+          <option value="volkswagen">Volkswagen</option>
+          <option value="aston">Aston Martin</option>
+        </select>
+        <select className="text-gray-700 border border-orange-500 p-2 text-lg font-bold mb-4">
+          <option value="">Product</option>
+          <option value="frontsplitter">Front Splitter</option>
+          <option value="sideskirtsplitter">Side Skirt Splitter</option>
+          <option value="reardiffuser">Rear Diffuser</option>
+          <option value="spoiler">Spoiler</option>
+          <option value="rearvalance">Rear Valance</option>
+          <option value="eyebrows">Eyebrows</option>
+          <option value="garnards">Garnards</option>
+          <option value="grill">Grill</option>
+          <option value="bumper">Bumpers</option>
+          <option value="headlights">Headlights</option>
+        </select>
+      </div>
       <div className="md:flex sm:px-2 flex-row justify-between gap-10 my-8">
         <Card
           imageUrl="/filters.png"
