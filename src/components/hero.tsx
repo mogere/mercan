@@ -3,7 +3,7 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <div className="w-full h-[600px]">
+    <div className="w-full h-[400px]">
       <Image
         src="/main.svg"
         alt="main image"
