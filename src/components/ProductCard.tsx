@@ -16,7 +16,7 @@ const ProductCard = ({
   price,
 }: ProductCardProps) => {
   return (
-    <div className="flex justify-center border border-gray-950 rounded-sm p-4 w-fit  flex-col gap-2">
+    <div className="flex bg-white justify-center border border-gray-950 rounded-sm p-4 w-fit  flex-col gap-2">
       <Image src={imageUrl} alt="Product" width={150} height={160} />
       <h2 className="text-lg text-black font-bold">{title}</h2>
       <p className="text-gray-600">{description}</p>

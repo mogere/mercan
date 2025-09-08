@@ -88,32 +88,6 @@ const ProductCategories = () => {
           description="Opening & Fitting of Clutch Set"
           price="Ksh 10,000"
         />
-        {/* ------------------------------------------------ */}
-        <ProductCard
-          imageUrl="/product.png"
-          title="Exide Din50-50ah Mileage Car Battery"
-          description="Opening & Fitting of Clutch Set"
-          price="Ksh 10,000"
-        />
-        <ProductCard
-          imageUrl="/product.png"
-          title="Exide Din50-50ah Mileage Car Battery"
-          description="Opening & Fitting of Clutch Set"
-          price="Ksh 10,000"
-        />
-        <ProductCard
-          imageUrl="/product.png"
-          title="Exide Din50-50ah Mileage Car Battery"
-          description="Opening & Fitting of Clutch Set"
-          price="Ksh 10,000"
-        />
-        <ProductCard
-          imageUrl="/product.png"
-          title="Exide Din50-50ah Mileage Car Battery"
-          description="Opening & Fitting of Clutch Set"
-          price="Ksh 10,000"
-        />
-        {/* ----------------------------------------------- */}
       </div>
       {/* Compatible Products */}
       <div className="compatible text-start mt-20 mb-8">
