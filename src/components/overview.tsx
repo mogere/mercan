@@ -1,7 +1,7 @@
 import Image from "next/image";
 const Overview = () => {
   return (
-    <div className="flex justify-between items-center gap-10 h-[200px] md:h-[300px] p-12 bg-[#3A3A3C] mb-4">
+    <div className="flex justify-between items-center gap-10 h-[200px] md:h-[300px] p-12 mt-6  bg-[#3A3A3C] mb-10">
       <div className="projects ">
         <h1 className="text-orange-500 font-extrabold mb-4 text-4xl md:text-7xl">
           50+
@@ -38,19 +38,6 @@ const Overview = () => {
           Years of Experience
         </span>
       </div>
-      {/* <Image
-        src="/vertical.svg"
-        alt="vertical line"
-        width={3}
-        height={5}
-        className="h-[70px] md:h-[200px] items-center"
-      />
-      <div className="team">
-        <h1 className="text-orange-500 font-extrabold mb-4 text-4xl md:text-7xl">
-          20+
-        </h1>
-        <span className="text-white text-lg md:text-2xl">Team Members</span>
-      </div> */}
     </div>
   );
 };
