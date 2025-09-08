@@ -2,6 +2,7 @@
 import Hero from "@/components/hero";
 // import NewsTips from "@/components/newstips";
 import NewProducts from "@/components/newProducts";
+import Overview from "@/components/overview";
 import ProductCategories from "@/components/ProductCategories";
 import Services from "@/components/services";
 // import Subscribe from "@/components/subscribe";
@@ -17,6 +18,7 @@ export default function Home() {
         {/* <Faq /> */}
         <ProductCategories />
         <NewProducts />
+        <Overview />
         {/* <NewsTips /> */}
         {/* <Subscribe /> */}
       </main>
