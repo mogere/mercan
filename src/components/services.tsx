@@ -10,7 +10,7 @@ const Services = () => {
     "/carsales.png",
   ];
   return (
-    <div className="p-8 sm:mt-[20rem]">
+    <div className="py-8 sm:mt-[20rem]">
       <div className="md:flex sm:px-2 flex-row justify-between gap-10 my-8">
         {imageUrls.map((imageUrl, index) => (
           <Service key={index} imageUrl={imageUrl} />

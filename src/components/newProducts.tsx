@@ -4,7 +4,7 @@ import Image from "next/image";
 const NewProducts = () => {
   return (
     <div>
-      <div className="flex flex-col justify-between gap-10 h-fit  mx-8 p-6 bg-[#3A3A3C] ">
+      <div className="flex flex-col justify-between gap-10 h-fit p-6 bg-[#3A3A3C] ">
         <div className="flex justify-between">
           <div>
             <h1 className="text-orange-500 font-extrabold mb-2 text-2xl md:text-5xl">
