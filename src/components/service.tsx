@@ -3,7 +3,7 @@ import React from "react";
 
 const Service = ({ imageUrl }: { imageUrl: string }) => {
   return (
-    <div className="w-[340px] h-[272px] ">
+    <div className="w-[340px] cursor-pointer h-[272px] ">
       <Image
         src={imageUrl}
         alt="service image"

@@ -46,7 +46,7 @@ const NewProducts = () => {
           />{" "}
         </div>
       </div>
-      <div className=" bg-[#3A3A3C] grid grid-cols-2 mx-8 gap-4">
+      <div className=" bg-[#3A3A3C] grid grid-cols-2 ">
         <Image
           src="/gear.png"
           alt="Product"
@@ -54,8 +54,8 @@ const NewProducts = () => {
           height={500}
           className=""
         />
-        <div className=" m-8 ">
-          <h1 className="text-orange-500 text-4xl mb-8 font-bold">
+        <div className=" mt-8 max-w-xl">
+          <h1 className="text-orange-500 text-5xl mb-8 font-bold">
             Stay Ahead with the Latest Auto Gear
           </h1>
           <span className="text-xl ">
@@ -63,6 +63,7 @@ const NewProducts = () => {
             products drop — from premium spares to performance upgrades. Get
             exclusive deals, tips, and updates straight to your inbox.
           </span>
+          <p></p>
           <input
             type="email"
             placeholder="Enter your email"

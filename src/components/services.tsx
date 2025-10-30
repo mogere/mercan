@@ -10,7 +10,7 @@ const Services = () => {
     "/carsales.png",
   ];
   return (
-    <div className="py-8 sm:mt-[20rem]">
+    <div className="mt-10 mb-20 px-10 items-center">
       <div className="md:flex sm:px-2 flex-row justify-between gap-10 my-8">
         {imageUrls.map((imageUrl, index) => (
           <Service key={index} imageUrl={imageUrl} />
@@ -24,7 +24,7 @@ const Services = () => {
           <option value="carsales">Car Sales</option>
         </select>
       </div>
-      <div className=" md:flex sm:px-2 flex-row justify-center gap-30 my-8">
+      <div className=" md:flex sm:px-2 flex-row justify-center gap-10 my-8">
         <Image
           src="/filter.svg"
           alt="Filter"
@@ -32,7 +32,7 @@ const Services = () => {
           height={35}
           className="mb-5"
         />
-        <select className="text-gray-700 border border-orange-500 px-7 p-2 text-lg font-bold mb-4">
+        <select className="text-gray-700 w-[25rem] h-[4rem] border border-orange-500 px-7 p-2 text-xl font-bold mb-4">
           <option value="">Make</option>
           <option value="toyota">Toyota</option>
           <option value="honda">Honda</option>
@@ -45,7 +45,7 @@ const Services = () => {
           <option value="volkswagen">Volkswagen</option>
           <option value="aston">Aston Martin</option>
         </select>
-        <select className="text-gray-700 border border-orange-500 p-2 text-lg font-bold mb-4">
+        <select className="text-gray-700 border w-[25rem] h-[4rem] border-orange-500 p-2 text-xl font-bold mb-4">
           <option value="">Product</option>
           <option value="frontsplitter">Front Splitter</option>
           <option value="sideskirtsplitter">Side Skirt Splitter</option>
@@ -59,11 +59,11 @@ const Services = () => {
           <option value="headlights">Headlights</option>
         </select>
       </div>
-      <div className="md:flex sm:px-2 flex-row justify-between gap-10 my-8">
-        <div className="flex flex-col mt-4 mr-7 rounded-xl p-4 bg-[#F2F2F2] h-full">
+      <div className="flex sm:px-2 flex-row gap-2 justify-between ">
+        <div className="flex flex-col mt-4  rounded-xl p-4 bg-[#F2F2F2] h-full">
           <Image
             src="/logo.png"
-            alt="Ad"
+            alt="mercan"
             width={70}
             height={70}
             className="mb-5 items-center"
@@ -71,35 +71,35 @@ const Services = () => {
 
           <Image
             src="/wheels.svg"
-            alt="Ad"
+            alt="wheels"
             width={70}
             height={70}
             className="mb-5 items-center"
           />
           <Image
             src="/engines.svg"
-            alt="Ad"
+            alt="engines"
             width={70}
             height={70}
             className="mb-5 items-center"
           />
           <Image
             src="/batterys.svg"
-            alt="Ad"
+            alt="battery"
             width={70}
             height={70}
             className="mb-5 items-center"
           />
           <Image
             src="/clutch.svg"
-            alt="Ad"
+            alt="clutch"
             width={70}
             height={70}
             className="mb-5  items-center"
           />
           <Image
             src="/headlights.svg"
-            alt="Ad"
+            alt="headlights"
             width={70}
             height={70}
             className="mb-5 items-center"
