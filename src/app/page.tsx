@@ -11,7 +11,7 @@ import Services from "@/components/services";
 export default function Home() {
   return (
     <>
-      <main className="mt-20 font-montserrat bg-white min-h-screen">
+      <main className="font-montserrat bg-white min-h-screen">
         <Hero />
         <Services />
         {/* <Testimonials /> */}

@@ -1,57 +1,64 @@
-import React from "react";
+"use client";
+import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+// import Link from "next/link";
+import { ShoppingCart, User, ChevronDown } from "lucide-react";
 
 const Header = ({ showHeader }: { showHeader: boolean }) => {
+  const [category, setCategory] = useState("All");
+  console.log("Show Header:", showHeader);
+
   return (
-    <div>
-      <header
-        className={` flex justify-between fixed top-0 left-0 w-full z-20 bg-white shadow transition-all duration-700 ${
-          showHeader ? "h-20 opacity-100" : "h-0 opacity-0 pointer-events-none"
-        } flex items-center px-8`}
-      >
-        <div
-          className={`transition-all duration-700 ${
-            showHeader ? "translate-x-0" : "-translate-x-20 opacity-0"
-          }`}
-        >
-          <Image src="/logo.png" alt="Logo" width={60} height={60} />
+    <header className="w-full text-black flex items-center justify-between px-6 py-3 shadow-sm bg-white">
+      {/* Logo */}
+      <div className="flex items-center space-x-2">
+        <Image
+          src="/logo.png" // Replace with your logo path
+          alt="Mercan Auto Spares"
+          width={60}
+          height={60}
+          className="object-contain"
+        />
+      </div>
+
+      {/* Search Bar */}
+      <div className="flex-1 max-w-2xl mx-6 hidden md:flex">
+        <div className="flex w-full border border-gray-300 rounded-lg overflow-hidden">
+          <div className="flex items-center px-3 bg-gray-100 border-r border-gray-300 cursor-pointer">
+            <span className="font-semibold text-sm">{category}</span>
+            <ChevronDown className="w-4 h-4 ml-1" />
+          </div>
+          <input
+            type="text"
+            placeholder="I am Looking for…."
+            className="flex-1 px-4 py-2 outline-none"
+          />
+          <button
+            className="bg-[#e3703b] text-white font-semibold px-5 hover:bg-[#cf602c] transition"
+            onClick={() => setCategory("All")}
+          >
+            Search
+          </button>
         </div>
-        <nav
-          className={`ml-10 flex gap-8 transition-opacity duration-700 ${
-            showHeader ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <Link
-            href="#"
-            className="text-gray-700 font-semibold hover:text-orange-600"
-          >
-            Home
-          </Link>
-          <Link
-            href="#"
-            className="text-gray-700 font-semibold hover:text-orange-600"
-          >
-            About
-          </Link>
-          <Link
-            href="#"
-            className="text-gray-700 font-semibold hover:text-orange-600"
-          >
-            Products & Services
-          </Link>
-          <Link
-            href="#"
-            className="text-gray-700 font-semibold hover:text-orange-600"
-          >
-            Contacts
-          </Link>
-        </nav>
-        <button className="bg-orange-600 text-white font-semibold py-2 px-4 rounded shadow hover:bg-orange-500 transition duration-300">
-          Get Started
+      </div>
+
+      {/* Right Icons */}
+      <div className="flex items-center space-x-6">
+        {/* Login */}
+        <button className="flex items-center text-sm font-medium hover:text-[#e3703b] transition">
+          <User className="w-5 h-5 mr-1" />
+          Login
         </button>
-      </header>
-    </div>
+
+        {/* Cart */}
+        <div className="relative cursor-pointer hover:text-[#e3703b] transition">
+          <ShoppingCart className="w-6 h-6" />
+          <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+            1
+          </span>
+        </div>
+      </div>
+    </header>
   );
 };
 
