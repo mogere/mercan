@@ -1,49 +1,69 @@
 "use client";
 import Image from "next/image";
 import { Wrench, Car, Star } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="relative w-full h-[80vh] flex items-center justify-center text-white overflow-hidden">
+    <section className="relative w-full h-[90vh] flex items-center justify-center text-white overflow-hidden">
       {/* Background image */}
       <div className="absolute inset-0">
         <Image
-          src="/hero.jpg" // Replace with your background image
-          alt="Garage Background"
+          src="/hero.jpg"
+          alt="Hero Background"
           fill
           className="object-cover brightness-[0.45]"
           priority
         />
       </div>
 
-      {/* Main Content */}
+      {/* Main content */}
       <div className="relative z-10 container mx-auto px-6 flex flex-col lg:flex-row items-center justify-between gap-10">
-        {/* Left side - Text and Buttons */}
-        <div className="flex flex-col space-y-8 max-w-xl text-center lg:text-left">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight uppercase">
+        {/* LEFT SIDE - Text & Buttons */}
+        <motion.div
+          initial={{ opacity: 0, x: -80 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="flex flex-col space-y-8 max-w-xl text-center lg:text-left"
+        >
+          <motion.h1
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight uppercase"
+          >
             Drive Performance.
             <br />
             Define Style.
             <br />
             Discover More..
-          </h1>
+          </motion.h1>
 
           {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <button className="flex items-center gap-2 cursor-pointer bg-black/70 border-b-4 border-[#e3703b] px-5 py-3  text-white font-semibold hover:bg-black transition">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.7 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+          >
+            <button className="flex items-center gap-2 bg-black/70 border-b-4 border-[#e3703b] px-5 py-3 rounded-md text-white font-semibold hover:bg-black transition">
               <Wrench className="w-5 h-5" />
               Book a Service
             </button>
-            <button className="flex items-center gap-2 cursor-pointer bg-black/70 border-b-4 border-[#e3703b] px-5 py-3  text-white font-semibold hover:bg-black transition">
+            <button className="flex items-center gap-2 bg-black/70 border-b-4 border-[#e3703b] px-5 py-3 rounded-md text-white font-semibold hover:bg-black transition">
               <Car className="w-5 h-5" />
               Browse Cars for Sale
             </button>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        {/* Right side - Mechanic + Testimonial */}
-        <div className="relative flex flex-col items-center">
-          {/* Mechanic image */}
+        {/* RIGHT SIDE - Mechanic & Testimonial */}
+        <motion.div
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="relative flex flex-col items-center"
+        >
           <div className="relative w-60 sm:w-72 lg:w-80 h-auto">
             <Image
               src="/hero-mech.png"
@@ -55,7 +75,12 @@ export default function Hero() {
           </div>
 
           {/* Testimonial card */}
-          <div className="absolute -right-16 sm:-right-24 text-white p-4  max-w-xs shadow-lg">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 1, duration: 0.6 }}
+            className="absolute -right-16 sm:-right-24 text-white p-4  max-w-xs shadow-lg"
+          >
             <div className="flex items-center gap-2 mb-2">
               <Image
                 src="/profile.png"
@@ -72,11 +97,11 @@ export default function Hero() {
               reliable.
             </p>
             <div className="flex items-center justify-end gap-1 mt-2 text-sm">
-              <Star className="w-4 h-4 fill-current text-orange-500" />
+              <Star className="w-4 h-4 fill-current text-white" />
               <span>4.9/5</span>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

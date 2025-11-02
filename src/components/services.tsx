@@ -9,6 +9,18 @@ const Services = () => {
     "/bodykit.png",
     "/carsales.png",
   ];
+
+  async function fetchServices() {
+    const res = await fetch("/api/service");
+    const data = await res.json();
+    return data;
+  }
+
+  console.log(
+    "these are the services ",
+    fetchServices().then((data) => data)
+  );
+
   return (
     <div className="mt-10 mb-20 px-10 items-center">
       <div className="md:flex sm:px-2 flex-row justify-between gap-10 my-8">
