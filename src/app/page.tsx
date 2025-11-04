@@ -14,13 +14,9 @@ export default function Home() {
       <main className="font-montserrat bg-white min-h-screen">
         <Hero />
         <Services />
-        {/* <Testimonials /> */}
-        {/* <Faq /> */}
         <ProductCategories />
         <NewProducts />
         <Overview />
-        {/* <NewsTips /> */}
-        {/* <Subscribe /> */}
       </main>
     </>
   );
