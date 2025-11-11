@@ -1,7 +1,7 @@
 import Image from "next/image";
 interface ButtonProps {
   label: string;
-  iconUrl: string;
+  iconUrl?: string;
   size?: "small" | "medium" | "large";
   underline?: boolean;
 }
