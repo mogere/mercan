@@ -14,7 +14,7 @@
     "drizzle-orm": "^0.44.7",
     "framer-motion": "^12.23.24",
     "lucide-react": "^0.548.0",
-    "next": "15.3.3",
+    "next": "15.6.0-canary.58",
     "pg": "^8.16.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
