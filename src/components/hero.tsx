@@ -1,11 +1,12 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { Wrench, Car, Star } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="relative w-full h-[90vh] flex items-center justify-center text-white overflow-hidden">
+    <section className="relative w-full min-h-[600px] h-[90vh] flex items-center justify-center text-white overflow-hidden">
       {/* Background image */}
       <div className="absolute inset-0">
         <Image
@@ -18,7 +19,7 @@ export default function Hero() {
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 container mx-auto px-6 flex flex-col lg:flex-row items-center justify-between gap-10">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 py-10 flex flex-col lg:flex-row items-center justify-between gap-10">
         {/* LEFT SIDE - Text & Buttons */}
         <motion.div
           initial={{ opacity: 0, x: -80 }}
@@ -30,7 +31,7 @@ export default function Hero() {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight uppercase"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight uppercase"
           >
             Drive Performance.
             <br />
@@ -44,16 +45,22 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.7 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start w-full sm:w-auto"
           >
-            <button className="flex items-center gap-2 bg-black/70 border-b-4 border-[#e3703b] px-5 py-3 rounded-md text-white font-semibold hover:bg-black transition">
+            <Link
+              href="/services"
+              className="flex items-center justify-center gap-2 bg-black/70 border-b-4 border-[#e3703b] px-5 py-3 rounded-md text-white font-semibold hover:bg-black transition min-h-[48px] touch-manipulation"
+            >
               <Wrench className="w-5 h-5" />
               Book a Service
-            </button>
-            <button className="flex items-center gap-2 bg-black/70 border-b-4 border-[#e3703b] px-5 py-3 rounded-md text-white font-semibold hover:bg-black transition">
+            </Link>
+            <Link
+              href="/shop"
+              className="flex items-center justify-center gap-2 bg-black/70 border-b-4 border-[#e3703b] px-5 py-3 rounded-md text-white font-semibold hover:bg-black transition min-h-[48px] touch-manipulation"
+            >
               <Car className="w-5 h-5" />
               Browse Cars for Sale
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
 
@@ -62,7 +69,7 @@ export default function Hero() {
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="relative flex flex-col items-center"
+          className="relative flex flex-col items-center hidden lg:flex"
         >
           <div className="relative w-60 sm:w-72 lg:w-80 h-auto">
             <Image
@@ -70,7 +77,7 @@ export default function Hero() {
               alt="Mechanic"
               width={400}
               height={400}
-              className=" object-cover z-10"
+              className="object-cover z-10"
             />
           </div>
 
@@ -79,7 +86,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 1, duration: 0.6 }}
-            className="absolute -right-16 sm:-right-24 text-white p-4  max-w-xs shadow-lg"
+            className="absolute -right-16 xl:-right-24 text-white p-4 max-w-xs shadow-lg"
           >
             <div className="flex items-center gap-2 mb-2">
               <Image

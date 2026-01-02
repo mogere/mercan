@@ -21,12 +21,18 @@ export const users = pgTable("users", {
   email: varchar("email", { length: 150 }).unique().notNull(),
   passwordHash: varchar("password_hash", { length: 255 }),
   role: varchar("role", { length: 50 }).default("customer"),
+  resetToken: varchar("reset_token", { length: 255 }),
+  resetTokenExpiry: timestamp("reset_token_expiry"),
   createdAt: timestamp("created_at").defaultNow(),
 });
 
 export const userRelations = relations(users, ({ many }) => ({
   orders: many(orders),
   reviews: many(reviews),
+  cart: many(cart),
+  appointments: many(appointments),
+  accounts: many(accounts),
+  sessions: many(sessions),
 }));
 
 // --------------------------------------------------
@@ -150,8 +156,20 @@ export const orders = pgTable("orders", {
   }),
   totalAmount: integer("total_amount").notNull(),
   status: varchar("status", { length: 50 }).default("pending"),
+  shippingAddress: text("shipping_address"),
+  paymentMethod: varchar("payment_method", { length: 50 }),
+  paymentStatus: varchar("payment_status", { length: 50 }).default("pending"),
+  mpesaTransactionId: varchar("mpesa_transaction_id", { length: 100 }),
   createdAt: timestamp("created_at").defaultNow(),
 });
+
+export const orderRelations = relations(orders, ({ one, many }) => ({
+  user: one(users, {
+    fields: [orders.userId],
+    references: [users.id],
+  }),
+  orderItems: many(orderItems),
+}));
 
 // --------------------------------------------------
 // REVIEWS (for products or services)
@@ -167,4 +185,132 @@ export const reviews = pgTable("reviews", {
   rating: integer("rating").notNull(),
   comment: text("comment"),
   createdAt: timestamp("created_at").defaultNow(),
+});
+
+// --------------------------------------------------
+// ORDER ITEMS (line items for each order)
+// --------------------------------------------------
+export const orderItems = pgTable("order_items", {
+  id: serial("id").primaryKey(),
+  orderId: integer("order_id").references(() => orders.id, {
+    onDelete: "cascade",
+  }),
+  productId: integer("product_id").references(() => products.id),
+  quantity: integer("quantity").notNull(),
+  price: integer("price").notNull(), // snapshot price at time of order
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const orderItemRelations = relations(orderItems, ({ one }) => ({
+  order: one(orders, {
+    fields: [orderItems.orderId],
+    references: [orders.id],
+  }),
+  product: one(products, {
+    fields: [orderItems.productId],
+    references: [products.id],
+  }),
+}));
+
+// --------------------------------------------------
+// SHOPPING CART
+// --------------------------------------------------
+export const cart = pgTable("cart", {
+  id: serial("id").primaryKey(),
+  userId: integer("user_id").references(() => users.id, {
+    onDelete: "cascade",
+  }),
+  productId: integer("product_id").references(() => products.id, {
+    onDelete: "cascade",
+  }),
+  quantity: integer("quantity").notNull().default(1),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const cartRelations = relations(cart, ({ one }) => ({
+  user: one(users, {
+    fields: [cart.userId],
+    references: [users.id],
+  }),
+  product: one(products, {
+    fields: [cart.productId],
+    references: [products.id],
+  }),
+}));
+
+// --------------------------------------------------
+// APPOINTMENTS (for service bookings)
+// --------------------------------------------------
+export const appointments = pgTable("appointments", {
+  id: serial("id").primaryKey(),
+  userId: integer("user_id").references(() => users.id, {
+    onDelete: "cascade",
+  }),
+  serviceId: integer("service_id").references(() => services.id, {
+    onDelete: "cascade",
+  }),
+  appointmentDate: timestamp("appointment_date").notNull(),
+  status: varchar("status", { length: 50 }).default("pending"),
+  notes: text("notes"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const appointmentRelations = relations(appointments, ({ one }) => ({
+  user: one(users, {
+    fields: [appointments.userId],
+    references: [users.id],
+  }),
+  service: one(services, {
+    fields: [appointments.serviceId],
+    references: [services.id],
+  }),
+}));
+
+// --------------------------------------------------
+// AUTH.JS TABLES (NextAuth v5)
+// --------------------------------------------------
+export const accounts = pgTable("accounts", {
+  id: serial("id").primaryKey(),
+  userId: integer("user_id")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  type: varchar("type", { length: 255 }).notNull(),
+  provider: varchar("provider", { length: 255 }).notNull(),
+  providerAccountId: varchar("provider_account_id", { length: 255 }).notNull(),
+  refresh_token: text("refresh_token"),
+  access_token: text("access_token"),
+  expires_at: integer("expires_at"),
+  token_type: varchar("token_type", { length: 255 }),
+  scope: varchar("scope", { length: 255 }),
+  id_token: text("id_token"),
+  session_state: varchar("session_state", { length: 255 }),
+});
+
+export const accountRelations = relations(accounts, ({ one }) => ({
+  user: one(users, {
+    fields: [accounts.userId],
+    references: [users.id],
+  }),
+}));
+
+export const sessions = pgTable("sessions", {
+  id: serial("id").primaryKey(),
+  sessionToken: varchar("session_token", { length: 255 }).notNull().unique(),
+  userId: integer("user_id")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  expires: timestamp("expires").notNull(),
+});
+
+export const sessionRelations = relations(sessions, ({ one }) => ({
+  user: one(users, {
+    fields: [sessions.userId],
+    references: [users.id],
+  }),
+}));
+
+export const verificationTokens = pgTable("verification_tokens", {
+  identifier: varchar("identifier", { length: 255 }).notNull(),
+  token: varchar("token", { length: 255 }).notNull().unique(),
+  expires: timestamp("expires").notNull(),
 });
