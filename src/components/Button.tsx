@@ -4,16 +4,19 @@ interface ButtonProps {
   iconUrl: string;
   size?: "small" | "medium" | "large";
   underline?: boolean;
+  onClick?: () => void;
 }
 const Button = ({
   label,
   iconUrl,
   size = "medium",
   underline,
+  onClick,
 }: ButtonProps) => {
   return (
     <div className="w-fit">
       <button
+        onClick={onClick}
         className={`bg-[#3A3A3CCC] flex justify-between gap-5  text-2xl ${
           size === "small"
             ? "p-2 text-sm"

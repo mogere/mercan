@@ -1,10 +1,42 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import Link from "next/link";
 import Button from "./Button";
 import ProductCard from "./ProductCard";
 import Image from "next/image";
+
+interface Product {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  imageUrl: string | null;
+  inStock: boolean;
+}
+
 const NewProducts = () => {
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    fetchNewProducts();
+  }, []);
+
+  const fetchNewProducts = async () => {
+    try {
+      const res = await fetch("/api/products?limit=4&page=1");
+      const data = await res.json();
+      if (data.success) {
+        setProducts(data.data.slice(0, 4));
+      }
+    } catch (error) {
+      console.error("Error fetching new products:", error);
+    }
+  };
+
   return (
     <div>
-      <div className="flex flex-col justify-between gap-10 h-fit p-6 bg-[#3A3A3C] ">
+      <div className="flex flex-col justify-between gap-10 h-fit p-6 bg-[#3A3A3C]">
         <div className="flex justify-between">
           <div>
             <h1 className="text-orange-500 font-extrabold mb-2 text-2xl md:text-5xl">
@@ -15,38 +47,34 @@ const NewProducts = () => {
             </span>
           </div>
           <div>
-            <Button label="Learn More" iconUrl="/browse.svg" underline />
+            <Link href="/shop">
+              <Button label="Learn More" iconUrl="/browse.svg" underline />
+            </Link>
           </div>
         </div>
 
         <div className="projects grid grid-cols-2 md:grid-cols-4 gap-4">
-          <ProductCard
-            imageUrl="/brakepad.png"
-            title="Exide Din50-50ah Mileage Car Battery"
-            description="Opening & Fitting of Clutch Set"
-            price="Ksh 10,000"
-          />{" "}
-          <ProductCard
-            imageUrl="/brakepad.png"
-            title="Exide Din50-50ah Mileage Car Battery"
-            description="Opening & Fitting of Clutch Set"
-            price="Ksh 10,000"
-          />{" "}
-          <ProductCard
-            imageUrl="/brakepad.png"
-            title="Exide Din50-50ah Mileage Car Battery"
-            description="Opening & Fitting of Clutch Set"
-            price="Ksh 10,000"
-          />{" "}
-          <ProductCard
-            imageUrl="/brakepad.png"
-            title="Exide Din50-50ah Mileage Car Battery"
-            description="Opening & Fitting of Clutch Set"
-            price="Ksh 10,000"
-          />{" "}
+          {products.length > 0 ? (
+            products.map((product) => (
+              <ProductCard
+                key={product.id}
+                id={product.id}
+                imageUrl={product.imageUrl || "/product.png"}
+                title={product.name}
+                description={product.description || ""}
+                price={product.price}
+                inStock={product.inStock}
+              />
+            ))
+          ) : (
+            // Placeholder cards while loading
+            Array.from({ length: 4 }).map((_, i) => (
+              <div key={i} className="bg-gray-200 animate-pulse rounded-lg h-96" />
+            ))
+          )}
         </div>
       </div>
-      <div className=" bg-[#3A3A3C] grid grid-cols-2 ">
+      <div className="bg-[#3A3A3C] grid grid-cols-1 md:grid-cols-2">
         <Image
           src="/gear.png"
           alt="Product"
@@ -54,11 +82,11 @@ const NewProducts = () => {
           height={500}
           className=""
         />
-        <div className=" mt-8 max-w-xl">
-          <h1 className="text-orange-500 text-5xl mb-8 font-bold">
+        <div className="mt-8 max-w-xl px-6 md:px-0">
+          <h1 className="text-orange-500 text-3xl md:text-5xl mb-8 font-bold">
             Stay Ahead with the Latest Auto Gear
           </h1>
-          <span className="text-xl ">
+          <span className="text-lg md:text-xl">
             Subscribe to our newsletter and be the first to know when new
             products drop — from premium spares to performance upgrades. Get
             exclusive deals, tips, and updates straight to your inbox.
@@ -67,7 +95,7 @@ const NewProducts = () => {
           <input
             type="email"
             placeholder="Enter your email"
-            className="border border-gray-300 w-1/2 p-2 mt-4 bg-white text-gray-500"
+            className="border border-gray-300 w-full md:w-1/2 p-2 mt-4 bg-white text-gray-500"
           />
         </div>
       </div>

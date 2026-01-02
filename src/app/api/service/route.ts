@@ -1,15 +1,39 @@
 import { db } from "../../../../db";
 import { services } from "../../../../db/schema";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+import { sql } from "drizzle-orm";
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
-    const data = await db.select().from(services);
-    return NextResponse.json(data);
+    const { searchParams } = new URL(request.url);
+    const page = parseInt(searchParams.get("page") || "1");
+    const limit = parseInt(searchParams.get("limit") || "10");
+    const offset = (page - 1) * limit;
+
+    const [data, totalResult] = await Promise.all([
+      db.select().from(services).limit(limit).offset(offset),
+      db.select({ count: sql<number>`count(*)::int` }).from(services),
+    ]);
+
+    const total = totalResult[0]?.count || 0;
+    const totalPages = Math.ceil(total / limit);
+
+    return NextResponse.json({
+      success: true,
+      data,
+      meta: {
+        page,
+        limit,
+        total,
+        totalPages,
+        hasNextPage: page < totalPages,
+        hasPrevPage: page > 1,
+      },
+    });
   } catch (error) {
     console.error("Error fetching services:", error);
     return NextResponse.json(
-      { error: "Failed to fetch services" },
+      { success: false, error: "Failed to fetch services" },
       { status: 500 }
     );
   }

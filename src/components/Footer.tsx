@@ -1,13 +1,18 @@
-// ...existing code...
+"use client";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const Footer = () => {
+  const pathname = usePathname();
+
+  if (pathname?.startsWith("/dashboard") || pathname?.startsWith("/admin")) {
+    return null;
+  }
+
   return (
     <>
-      {/* Main footer */}
       <footer className="w-full bg-[#3A3A3C] text-white py-10 px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Left: Logo + description + address */}
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-3">
               <Image src="/logo.png" alt="Mercan Logo" width={60} height={60} />
@@ -40,7 +45,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Middle: Services & Quick links (stack on small, two columns on md) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
               <h4 className="text-orange-400 text-sm font-semibold mb-3">
@@ -130,7 +134,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Right: Newsletter / appointment / socials */}
           <div className="flex flex-col gap-4">
             <h4 className="text-orange-400 text-sm font-semibold">
               Schedule An Appointment
@@ -194,7 +197,6 @@ const Footer = () => {
         </div>
       </footer>
       <hr className="text-orange-500" />
-      {/* Bottom copyright bar */}
       <div className="w-full bg-[#3A3A3C] text-white/80 text-sm py-4">
         <div className="max-w-7xl mx-auto px-6 text-center">
           © {new Date().getFullYear()} Mercan. All rights reserved.
@@ -205,4 +207,3 @@ const Footer = () => {
 };
 
 export default Footer;
-// ...existing code...

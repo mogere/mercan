@@ -1,8 +1,18 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Card from "./Card";
 import Service from "./service";
 import Button from "./Button";
+import FilterDropdown from "./FilterDropdown";
+
 const Services = () => {
+  const router = useRouter();
+  const [category, setCategory] = useState("");
+  const [make, setMake] = useState("");
+  const [product, setProduct] = useState("");
   const imageUrls = [
     "/garage.png",
     "/autospares.png",
@@ -10,66 +20,86 @@ const Services = () => {
     "/carsales.png",
   ];
 
-  async function fetchServices() {
-    const res = await fetch("/api/service");
-    const data = await res.json();
-    return data;
-  }
+  const categoryOptions = [
+    { value: "bodykits", label: "Body kits" },
+    { value: "autospares", label: "Auto Spares" },
+    { value: "garage", label: "Garage" },
+    { value: "carsales", label: "Car Sales" },
+  ];
 
-  console.log(
-    "these are the services ",
-    fetchServices().then((data) => data)
-  );
+  const makeOptions = [
+    { value: "toyota", label: "Toyota" },
+    { value: "honda", label: "Honda" },
+    { value: "mercedes", label: "Mercedes" },
+    { value: "audi", label: "Audi" },
+    { value: "bmw", label: "BMW" },
+    { value: "suzuki", label: "Suzuki" },
+    { value: "porsche", label: "Porsche" },
+    { value: "subaru", label: "Subaru" },
+    { value: "volkswagen", label: "Volkswagen" },
+    { value: "aston", label: "Aston Martin" },
+  ];
+
+  const productOptions = [
+    { value: "frontsplitter", label: "Front Splitter" },
+    { value: "sideskirtsplitter", label: "Side Skirt Splitter" },
+    { value: "reardiffuser", label: "Rear Diffuser" },
+    { value: "spoiler", label: "Spoiler" },
+    { value: "rearvalance", label: "Rear Valance" },
+    { value: "eyebrows", label: "Eyebrows" },
+    { value: "garnards", label: "Garnards" },
+    { value: "grill", label: "Grill" },
+    { value: "bumper", label: "Bumpers" },
+    { value: "headlights", label: "Headlights" },
+  ];
+
+  const handleBrowseAll = () => {
+    const params = new URLSearchParams();
+    if (category) params.append("category", category);
+    if (make) params.append("make", make);
+    if (product) params.append("product", product);
+
+    router.push(`/shop${params.toString() ? `?${params.toString()}` : ""}`);
+  };
 
   return (
-    <div className="mt-10 mb-20 px-10 items-center">
-      <div className="md:flex sm:px-2 flex-row justify-between gap-10 my-8">
+    <div className="mt-10 mb-20 px-4 sm:px-6 md:px-10 items-center">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-10 my-8">
         {imageUrls.map((imageUrl, index) => (
           <Service key={index} imageUrl={imageUrl} />
         ))}
       </div>
-      <div className="text-center p-8">
-        <select className="text-gray-700 w-[25rem]  border-b-2 text-lg font-bold mb-4">
-          <option value="bodykits">Body kits</option>
-          <option value="autospares">Auto Spares</option>
-          <option value="garage">Garage</option>
-          <option value="carsales">Car Sales</option>
-        </select>
+      <div className="text-center p-4 sm:p-8">
+        <FilterDropdown
+          placeholder="Select Category"
+          options={categoryOptions}
+          value={category}
+          onChange={setCategory}
+          className="w-full max-w-md mx-auto"
+        />
       </div>
-      <div className=" md:flex sm:px-2 flex-row justify-center gap-10 my-8">
+      <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-10 my-8">
         <Image
           src="/filter.svg"
           alt="Filter"
           width={35}
           height={35}
-          className="mb-5"
+          className="hidden md:block"
         />
-        <select className="text-gray-700 w-[25rem] h-[4rem] border border-orange-500 px-7 p-2 text-xl font-bold mb-4">
-          <option value="">Make</option>
-          <option value="toyota">Toyota</option>
-          <option value="honda">Honda</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
-          <option value="bmw">BMW</option>
-          <option value="suzuki">Suzuki</option>
-          <option value="porsche">Porsche</option>
-          <option value="subaru">Subaru</option>
-          <option value="volkswagen">Volkswagen</option>
-          <option value="aston">Aston Martin</option>
-        </select>
-        <select className="text-gray-700 border w-[25rem] h-[4rem] border-orange-500 p-2 text-xl font-bold mb-4">
-          <option value="">Product</option>
-          <option value="frontsplitter">Front Splitter</option>
-          <option value="sideskirtsplitter">Side Skirt Splitter</option>
-          <option value="reardiffuser">Rear Diffuser</option>
-          <option value="spoiler">Spoiler</option>
-          <option value="rearvalance">Rear Valance</option>
-          <option value="eyebrows">Eyebrows</option>
-          <option value="garnards">Garnards</option>
-          <option value="grill">Grill</option>
-          <option value="bumper">Bumpers</option>
-          <option value="headlights">Headlights</option>
-        </select>
+        <FilterDropdown
+          placeholder="Make"
+          options={makeOptions}
+          value={make}
+          onChange={setMake}
+          className="w-full md:w-[25rem]"
+        />
+        <FilterDropdown
+          placeholder="Product"
+          options={productOptions}
+          value={product}
+          onChange={setProduct}
+          className="w-full md:w-[25rem]"
+        />
       </div>
       <div className="flex sm:px-2 flex-row gap-2 justify-between ">
         <div className="flex flex-col mt-4  rounded-xl p-4 bg-[#F2F2F2] h-full">
@@ -176,7 +206,12 @@ const Services = () => {
         </div>
       </div>
       <div className="flex justify-center items-center">
-        <Button label="Browse all" iconUrl="/browse.svg" underline />
+        <Button
+          label="Browse all"
+          iconUrl="/browse.svg"
+          underline
+          onClick={handleBrowseAll}
+        />
       </div>
     </div>
   );
