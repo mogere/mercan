@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useCart } from "@/hooks/use-cart";
 import { ShoppingCart } from "lucide-react";
 import { Button } from "./ui/button";
+import { toast } from "sonner";
 
 interface ProductCardProps {
   id: number;
@@ -31,17 +32,16 @@ const ProductCard = ({
     e.stopPropagation();
 
     addItem({
-      id: id.toString(),
       productId: id,
       name: title,
       price,
-      quantity: 1,
       imageUrl,
       inStock,
     });
 
-    // Optional: Show a toast notification
-    alert(`${title} added to cart!`);
+    toast.success(`${title} added to cart!`, {
+      description: "View your cart to proceed to checkout",
+    });
   };
 
   return (

@@ -11,6 +11,8 @@ import { Card } from "@/components/ui/card";
 import FilterDropdown from "@/components/FilterDropdown";
 import { Badge } from "@/components/ui/badge";
 
+export const dynamic = "force-dynamic";
+
 interface Product {
   id: number;
   name: string;

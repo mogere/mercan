@@ -17,6 +17,9 @@ interface Product {
 
 const NewProducts = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     fetchNewProducts();
@@ -32,6 +35,42 @@ const NewProducts = () => {
     } catch (error) {
       console.error("Error fetching new products:", error);
     }
+  };
+
+  const handleSubscribe = async () => {
+    if (!email || !email.includes("@")) {
+      setStatus("error");
+      setMessage("Please enter a valid email");
+      return;
+    }
+
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setStatus("success");
+        setMessage("Successfully subscribed!");
+        setEmail("");
+      } else {
+        setStatus("error");
+        setMessage(data.error || "Subscription failed");
+      }
+    } catch (error) {
+      setStatus("error");
+      setMessage("Something went wrong");
+    }
+
+    setTimeout(() => {
+      setStatus("idle");
+      setMessage("");
+    }, 3000);
   };
 
   return (
@@ -92,11 +131,29 @@ const NewProducts = () => {
             exclusive deals, tips, and updates straight to your inbox.
           </span>
           <p></p>
-          <input
-            type="email"
-            placeholder="Enter your email"
-            className="border border-gray-300 w-full md:w-1/2 p-2 mt-4 bg-white text-gray-500"
-          />
+          <div className="flex gap-2 mt-4">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              onKeyPress={(e) => e.key === "Enter" && handleSubscribe()}
+              className="border border-gray-300 flex-1 md:flex-none md:w-1/2 p-2 bg-white text-gray-500"
+              disabled={status === "loading"}
+            />
+            <button
+              onClick={handleSubscribe}
+              disabled={status === "loading"}
+              className="bg-orange-500 text-white px-4 py-2 hover:bg-orange-600 transition disabled:opacity-50"
+            >
+              {status === "loading" ? "..." : "Subscribe"}
+            </button>
+          </div>
+          {message && (
+            <p className={`text-sm mt-2 ${status === "success" ? "text-green-400" : "text-red-400"}`}>
+              {message}
+            </p>
+          )}
         </div>
       </div>
     </div>

@@ -48,7 +48,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             id: foundUser.id.toString(),
             email: foundUser.email,
             name: foundUser.name,
-            role: foundUser.role,
+            role: foundUser.role || "customer",
           };
         } catch (error) {
           console.error("Authentication error:", error);

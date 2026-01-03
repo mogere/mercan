@@ -1,13 +1,54 @@
 "use client";
+import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const Footer = () => {
   const pathname = usePathname();
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
 
   if (pathname?.startsWith("/dashboard") || pathname?.startsWith("/admin")) {
     return null;
   }
+
+  const handleSubscribe = async () => {
+    if (!email || !email.includes("@")) {
+      setStatus("error");
+      setMessage("Please enter a valid email");
+      return;
+    }
+
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setStatus("success");
+        setMessage("Successfully subscribed!");
+        setEmail("");
+      } else {
+        setStatus("error");
+        setMessage(data.error || "Subscription failed");
+      }
+    } catch (error) {
+      setStatus("error");
+      setMessage("Something went wrong");
+    }
+
+    setTimeout(() => {
+      setStatus("idle");
+      setMessage("");
+    }, 3000);
+  };
 
   return (
     <>
@@ -58,7 +99,9 @@ const Footer = () => {
                     width={20}
                     height={20}
                   />
-                  Garage
+                  <Link href="/services" className="hover:text-orange-400 transition">
+                    Garage
+                  </Link>
                 </li>
                 <li className="flex gap-2">
                   <Image
@@ -67,7 +110,9 @@ const Footer = () => {
                     width={20}
                     height={20}
                   />
-                  Auto Spares
+                  <Link href="/shop" className="hover:text-orange-400 transition">
+                    Auto Spares
+                  </Link>
                 </li>
                 <li className="flex gap-2">
                   <Image
@@ -76,7 +121,9 @@ const Footer = () => {
                     width={20}
                     height={20}
                   />
-                  Body-kit Conversion
+                  <Link href="/shop?category=bodykits" className="hover:text-orange-400 transition">
+                    Body-kit Conversion
+                  </Link>
                 </li>
                 <li className="flex gap-2">
                   <Image
@@ -85,7 +132,9 @@ const Footer = () => {
                     width={20}
                     height={20}
                   />
-                  Car Sales
+                  <Link href="/shop" className="hover:text-orange-400 transition">
+                    Car Sales
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -101,7 +150,9 @@ const Footer = () => {
                     width={20}
                     height={20}
                   />
-                  About Us
+                  <Link href="/#about" className="hover:text-orange-400 transition">
+                    About Us
+                  </Link>
                 </li>
                 <li className="flex gap-2">
                   <Image
@@ -110,7 +161,9 @@ const Footer = () => {
                     width={20}
                     height={20}
                   />
-                  Products & Services
+                  <Link href="/shop" className="hover:text-orange-400 transition">
+                    Products & Services
+                  </Link>
                 </li>
                 <li className="flex gap-2">
                   <Image
@@ -119,7 +172,9 @@ const Footer = () => {
                     width={20}
                     height={20}
                   />
-                  Contact Us
+                  <Link href="/#contact" className="hover:text-orange-400 transition">
+                    Contact Us
+                  </Link>
                 </li>
                 <li className="flex gap-2">
                   <Image
@@ -128,7 +183,9 @@ const Footer = () => {
                     width={20}
                     height={20}
                   />
-                  Car Sales
+                  <Link href="/shop" className="hover:text-orange-400 transition">
+                    Car Sales
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -143,16 +200,27 @@ const Footer = () => {
               <input
                 type="email"
                 placeholder="Write your email..."
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                onKeyPress={(e) => e.key === "Enter" && handleSubscribe()}
                 className="flex-1 p-2 text-sm bg-white text-gray-800 placeholder-gray-400 rounded-l focus:outline-none"
                 aria-label="Email"
+                disabled={status === "loading"}
               />
               <button
-                className="bg-orange-500 text-white px-3 rounded-r flex items-center justify-center"
+                onClick={handleSubscribe}
+                disabled={status === "loading"}
+                className="bg-orange-500 text-white px-3 rounded-r flex items-center justify-center hover:bg-orange-600 transition disabled:opacity-50"
                 aria-label="Send email"
               >
                 <Image src="/icons/send.svg" alt="" width={20} height={20} />
               </button>
             </div>
+            {message && (
+              <p className={`text-sm ${status === "success" ? "text-green-400" : "text-red-400"}`}>
+                {message}
+              </p>
+            )}
 
             <div className="text-sm text-white/90">
               <span className="block text-orange-400">Open Hours:</span>
@@ -160,7 +228,7 @@ const Footer = () => {
             </div>
 
             <div className="flex gap-4 mt-2">
-              <a href="#" aria-label="Twitter">
+              <a href="https://twitter.com/mercan" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:opacity-80 transition">
                 <Image
                   src="/social-media/x.png"
                   alt="Twitter"
@@ -168,7 +236,7 @@ const Footer = () => {
                   height={20}
                 />
               </a>
-              <a href="#" aria-label="LinkedIn">
+              <a href="https://linkedin.com/company/mercan" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:opacity-80 transition">
                 <Image
                   src="/social-media/linkedin.png"
                   alt="LinkedIn"
@@ -176,7 +244,7 @@ const Footer = () => {
                   height={20}
                 />
               </a>
-              <a href="#" aria-label="Instagram">
+              <a href="https://instagram.com/mercan" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:opacity-80 transition">
                 <Image
                   src="/social-media/instagram.png"
                   alt="Instagram"
@@ -184,7 +252,7 @@ const Footer = () => {
                   height={20}
                 />
               </a>
-              <a href="#" aria-label="Facebook">
+              <a href="https://facebook.com/mercan" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:opacity-80 transition">
                 <Image
                   src="/social-media/facebook.png"
                   alt="Facebook"

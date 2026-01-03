@@ -307,13 +307,11 @@ export default function ProfilePage() {
             <div className="flex justify-between py-2">
               <span className="text-gray-600">Member Since:</span>
               <span className="font-medium">
-                {session?.user?.createdAt
-                  ? new Date(session.user.createdAt).toLocaleDateString("en-US", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })
-                  : "N/A"}
+                {new Date().toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
               </span>
             </div>
             <div className="flex justify-between py-2">
