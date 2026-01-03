@@ -26,7 +26,6 @@ export async function POST(request: NextRequest) {
       totalAmount,
     } = body;
 
-    // Validation
     if (!shippingInfo || !paymentMethod || !items || items.length === 0) {
       return errorResponse("Missing required fields", 400);
     }

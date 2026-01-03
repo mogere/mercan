@@ -267,6 +267,15 @@ export const appointmentRelations = relations(appointments, ({ one }) => ({
 }));
 
 // --------------------------------------------------
+// NEWSLETTER
+// --------------------------------------------------
+export const newsletter = pgTable("newsletter", {
+  id: serial("id").primaryKey(),
+  email: varchar("email", { length: 150 }).unique().notNull(),
+  subscribedAt: timestamp("subscribed_at").defaultNow(),
+});
+
+// --------------------------------------------------
 // AUTH.JS TABLES (NextAuth v5)
 // --------------------------------------------------
 export const accounts = pgTable("accounts", {

@@ -49,15 +49,12 @@ export class MpesaClient {
   }
 
   private formatPhone(phone: string): string {
-    // Remove any spaces, dashes, or plus signs
     let cleaned = phone.replace(/[\s\-\+]/g, "");
 
-    // If starts with 0, replace with 254
     if (cleaned.startsWith("0")) {
       cleaned = "254" + cleaned.substring(1);
     }
 
-    // If doesn't start with 254, add it
     if (!cleaned.startsWith("254")) {
       cleaned = "254" + cleaned;
     }
